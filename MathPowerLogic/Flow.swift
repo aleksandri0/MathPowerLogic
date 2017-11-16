@@ -6,7 +6,7 @@ protocol Router {
     
     func routeToDifficulty(callBack: @escaping (Difficulty) -> Void)
     func routeTo(calculation: Calculation, difficulty: Difficulty, callBack: @escaping (Answer) -> Void)
-    func routeTo(result: [Calculation: Answer]?)
+    func routeTo(result: [Calculation: Answer]?, restartCallBack: @escaping () -> Void)
 
 }
 
@@ -39,19 +39,25 @@ class Flow<R: Router, Calculation, Answer> where Calculation == R.Calculation, A
         }
         
         if let calculations = calculations[difficulty], let firstCalculation = calculations.first {
-            router.routeTo(calculation: firstCalculation, difficulty: difficulty, callBack: callback(for: firstCalculation))
+            router.routeTo(calculation: firstCalculation, difficulty: difficulty, callBack: calculationCallback(for: firstCalculation))
         } else {
-            router.routeTo(result: nil)
+            router.routeTo(result: nil, restartCallBack: restartCallback())
         }
     }
     
-    private func callback(for calculation: Calculation) -> (Answer) -> Void {
+    private func calculationCallback(for calculation: Calculation) -> (Answer) -> Void {
         return { [weak self] in
-            self?.handleCallback(calculation, $0)
+            self?.handleCalculationCallback(calculation, $0)
         }
     }
     
-    private func handleCallback(_ calculation: Calculation, _ answer: Answer) {
+    private func restartCallback() -> () -> Void {
+        return { [weak self] in
+            self?.selectDifficulty()
+        }
+    }
+    
+    private func handleCalculationCallback(_ calculation: Calculation, _ answer: Answer) {
         guard let difficulty = difficulty else {
             fatalError("Difficulty is not set")
         }
@@ -62,9 +68,9 @@ class Flow<R: Router, Calculation, Answer> where Calculation == R.Calculation, A
         answers[calculation] = answer
         let nextIndex = currentIndex + 1
         if nextIndex < calculations.count {
-            router.routeTo(calculation: calculations[nextIndex], difficulty: difficulty, callBack: callback(for: calculations[nextIndex]))
+            router.routeTo(calculation: calculations[nextIndex], difficulty: difficulty, callBack: calculationCallback(for: calculations[nextIndex]))
         } else {
-            router.routeTo(result: answers)
+            router.routeTo(result: answers, restartCallBack: restartCallback())
         }
     }
 }

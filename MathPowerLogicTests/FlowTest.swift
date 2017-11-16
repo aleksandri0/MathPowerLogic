@@ -7,19 +7,19 @@ class FlowTest: XCTestCase {
     let router = DummyRouter()
     
     func test_noCalculation_doesNotRouteToCalculation() {
-        makeCompleteSUT().start()
+        makeReadyToStartSUT().start()
         
         XCTAssertEqual(router.calculations.count, 0)
     }
     
     func test_oneCalculation_routesToCalculation() {
-        makeCompleteSUT(calculations: ["1+1"]).start()
+        makeReadyToStartSUT(calculations: ["1+1"]).start()
         
         XCTAssertEqual(router.calculations.count, 1)
     }
     
     func test_twoCalculationsAnswerFirst_routesFromFirstToSecondCalculation() {
-        let sut = makeCompleteSUT(calculations: ["1+1", "2+2"])
+        let sut = makeReadyToStartSUT(calculations: ["1+1", "2+2"])
         
         sut.start()
         router.answerCallback("A1")
@@ -28,7 +28,7 @@ class FlowTest: XCTestCase {
     }
     
     func test_answerFirstAndSecond_routesFromSecondToThirdCalculation() {
-        let sut = makeCompleteSUT(calculations: ["1+1", "2+2", "3+3"])
+        let sut = makeReadyToStartSUT(calculations: ["1+1", "2+2", "3+3"])
         
         sut.start()
         router.answerCallback("A1")
@@ -38,14 +38,14 @@ class FlowTest: XCTestCase {
     }
     
     func test_twoCalculations_routesToFirstCalculation() {
-        let sut = makeCompleteSUT(calculations: ["1+1", "2+2"])
+        let sut = makeReadyToStartSUT(calculations: ["1+1", "2+2"])
         sut.start()
         
         XCTAssertEqual(router.calculations, ["1+1"])
     }
     
     func test_oneCalculation_doesNotRouteToUnexistentCalculation() {
-        let sut = makeCompleteSUT(calculations: ["1+1"])
+        let sut = makeReadyToStartSUT(calculations: ["1+1"])
         sut.start()
         sut.start()
         
@@ -53,14 +53,14 @@ class FlowTest: XCTestCase {
     }
     
     func test_noCalculations_doesNotRouteToResult() {
-        let sut = makeCompleteSUT(calculations: [])
+        let sut = makeReadyToStartSUT(calculations: [])
         sut.start()
         
         XCTAssertNil(router.result)
     }
     
     func test_oneCalculationAndAnswerFirst_routesToResult() {
-        let sut = makeCompleteSUT(calculations: ["1+1"])
+        let sut = makeReadyToStartSUT(calculations: ["1+1"])
         sut.start()
         router.answerCallback("A1")
         
@@ -73,7 +73,7 @@ class FlowTest: XCTestCase {
     }
 
     func test_twoCalculationsAndAnswerFirst_doesNotRouteToResult() {
-        let sut = makeCompleteSUT(calculations: ["1+1", "2+2"])
+        let sut = makeReadyToStartSUT(calculations: ["1+1", "2+2"])
         sut.start()
         router.answerCallback("A1")
 
@@ -82,7 +82,7 @@ class FlowTest: XCTestCase {
     }
 
     func test_twoCalculationsAndAnswerFirstAndSecond_routesToResult() {
-        let sut = makeCompleteSUT(calculations: ["1+1", "2+2"])
+        let sut = makeReadyToStartSUT(calculations: ["1+1", "2+2"])
         sut.start()
         router.answerCallback("A1")
         router.answerCallback("A2")
@@ -97,7 +97,7 @@ class FlowTest: XCTestCase {
     
     func test_difficultySelected_isRouted() {
         let difficulty = Difficulty.easy
-        let sut = makeCompleteSUT(calculations: ["1+1"], difficulty)
+        let sut = makeReadyToStartSUT(calculations: ["1+1"], difficulty)
         sut.start()
         XCTAssertEqual(router.difficulty, difficulty)
     }
@@ -118,11 +118,24 @@ class FlowTest: XCTestCase {
         XCTAssertNil(router.result)
     }
     
+    func test_gameEndedAndRestartedToDifficultyScreen_ContentIsCleared() {
+        let firstDifficulty = Difficulty.easy
+        let firstCalculations = ["1+1"]
+        let sut = makeReadyToStartSUT(calculations: firstCalculations, firstDifficulty)
+        sut.start()
+        router.answerCallback("A1")
+        router.restartCallback()
+        
+        XCTAssertNil(router.difficulty)
+        XCTAssertNil(router.result)
+        XCTAssertEqual(router.calculations.count, 0)
+    }
+    
     func makeSUT(_ calculations: [Difficulty: [String]] = [:]) -> Flow<DummyRouter, String, String> {
         return Flow<DummyRouter, String, String>(router, calculations)
     }
     
-    func makeCompleteSUT(calculations: [String] = [], _ difficulty: Difficulty = .easy, isGameStarted: Bool = false) -> Flow<DummyRouter, String, String> {
+    func makeReadyToStartSUT(calculations: [String] = [], _ difficulty: Difficulty = .easy) -> Flow<DummyRouter, String, String> {
         let sut = makeSUT([difficulty: calculations])
         sut.selectDifficulty()
         router.difficultyCallback(difficulty)
@@ -134,11 +147,15 @@ class FlowTest: XCTestCase {
 
         var calculations: [String] = []
         var answerCallback: (String) -> Void = { _ in }
+        var restartCallback: () -> Void = { }
         var difficultyCallback: (Difficulty) -> Void = { _ in }
         var result: [String: String]?
         var difficulty: Difficulty?
         
         func routeToDifficulty(callBack: @escaping (Difficulty) -> Void) {
+            difficulty = nil
+            calculations = []
+            result = nil
             self.difficultyCallback = callBack
         }
         
@@ -148,8 +165,9 @@ class FlowTest: XCTestCase {
             self.difficulty = difficulty
         }
 
-        func routeTo(result: [String : (String)]?) {
+        func routeTo(result: [String: String]?, restartCallBack: @escaping () -> Void) {
             self.result = result
+            self.restartCallback = restartCallBack
         }
     }
     
