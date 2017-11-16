@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FABCB56E1FBCB70B007B5728 /* MathPowerLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FABCB5641FBCB70B007B5728 /* MathPowerLogic.framework */; };
-		FABCB5731FBCB70B007B5728 /* MathPowerLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5721FBCB70B007B5728 /* MathPowerLogicTests.swift */; };
-		FABCB5751FBCB70B007B5728 /* MathPowerLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = FABCB5671FBCB70B007B5728 /* MathPowerLogic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FABCB5831FBDC003007B5728 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5821FBDC003007B5728 /* Flow.swift */; };
+		FABCB5851FBDC00A007B5728 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5841FBDC00A007B5728 /* FlowTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +24,11 @@
 
 /* Begin PBXFileReference section */
 		FABCB5641FBCB70B007B5728 /* MathPowerLogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MathPowerLogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FABCB5671FBCB70B007B5728 /* MathPowerLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathPowerLogic.h; sourceTree = "<group>"; };
 		FABCB5681FBCB70B007B5728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FABCB56D1FBCB70B007B5728 /* MathPowerLogicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathPowerLogicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FABCB5721FBCB70B007B5728 /* MathPowerLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathPowerLogicTests.swift; sourceTree = "<group>"; };
 		FABCB5741FBCB70B007B5728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FABCB5821FBDC003007B5728 /* Flow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		FABCB5841FBDC00A007B5728 /* FlowTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 		FABCB5661FBCB70B007B5728 /* MathPowerLogic */ = {
 			isa = PBXGroup;
 			children = (
-				FABCB5671FBCB70B007B5728 /* MathPowerLogic.h */,
+				FABCB5821FBDC003007B5728 /* Flow.swift */,
 				FABCB5681FBCB70B007B5728 /* Info.plist */,
 			);
 			path = MathPowerLogic;
@@ -80,7 +80,7 @@
 		FABCB5711FBCB70B007B5728 /* MathPowerLogicTests */ = {
 			isa = PBXGroup;
 			children = (
-				FABCB5721FBCB70B007B5728 /* MathPowerLogicTests.swift */,
+				FABCB5841FBDC00A007B5728 /* FlowTest.swift */,
 				FABCB5741FBCB70B007B5728 /* Info.plist */,
 			);
 			path = MathPowerLogicTests;
@@ -93,7 +93,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FABCB5751FBCB70B007B5728 /* MathPowerLogic.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,10 +147,12 @@
 				TargetAttributes = {
 					FABCB5631FBCB70B007B5728 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 					FABCB56C1FBCB70B007B5728 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -196,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FABCB5831FBDC003007B5728 /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FABCB5731FBCB70B007B5728 /* MathPowerLogicTests.swift in Sources */,
+				FABCB5851FBDC00A007B5728 /* FlowTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +335,7 @@
 		FABCB5791FBCB70B007B5728 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -348,6 +351,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sigmasoftware.MathPowerLogic;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -355,6 +359,7 @@
 		FABCB57A1FBCB70B007B5728 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -377,6 +382,8 @@
 		FABCB57C1FBCB70B007B5728 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4VGC6AR5XL;
@@ -384,6 +391,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sigmasoftware.MathPowerLogicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -391,6 +399,8 @@
 		FABCB57D1FBCB70B007B5728 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4VGC6AR5XL;
