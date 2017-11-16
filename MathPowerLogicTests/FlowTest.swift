@@ -118,13 +118,23 @@ class FlowTest: XCTestCase {
         XCTAssertNil(router.result)
     }
     
-    func test_gameEndedAndRestartedToDifficultyScreen_ContentIsCleared() {
+    func test_ended_restartedToDifficultyScreen_ContentIsCleared() {
         let firstDifficulty = Difficulty.easy
         let firstCalculations = ["1+1"]
         let sut = makeReadyToStartSUT(calculations: firstCalculations, firstDifficulty)
         sut.start()
         router.answerCallback("A1")
         router.restartCallback()
+        
+        XCTAssertNil(router.difficulty)
+        XCTAssertNil(router.result)
+        XCTAssertEqual(router.calculations.count, 0)
+    }
+
+    
+    func test_notStarted_onDifficultyScreen_ContentIsCleared() {
+        let sut = makeSUT()
+        sut.selectDifficulty()
         
         XCTAssertNil(router.difficulty)
         XCTAssertNil(router.result)
