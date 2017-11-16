@@ -52,17 +52,65 @@ class FlowTest: XCTestCase {
         XCTAssertEqual(router.calculations, ["1+1", "1+1"])
     }
     
+    func test_noCalculations_doesNotRouteToResult() {
+        let sut = makeSUT(calculations: [])
+        sut.start()
+        
+        XCTAssertNil(router.result)
+    }
+    
+    func test_oneCalculationAndAnswerFirst_routesToResult() {
+        let sut = makeSUT(calculations: ["1+1"])
+        sut.start()
+        router.answerCallback("A1")
+        
+        guard let result = router.result else {
+            XCTFail("Expected a result")
+            return
+        }
+        
+        XCTAssertEqual(result, ["1+1": "A1"])
+    }
+
+    func test_twoCalculationsAndAnswerFirst_doesNotRouteToResult() {
+        let sut = makeSUT(calculations: ["1+1", "2+2"])
+        sut.start()
+        router.answerCallback("A1")
+
+        XCTAssertNil(router.result)
+    }
+
+    func test_twoCalculationsAndAnswerFirstAndSecond_routesToResult() {
+        let sut = makeSUT(calculations: ["1+1", "2+2"])
+        sut.start()
+        router.answerCallback("A1")
+        router.answerCallback("A2")
+        
+        guard let result = router.result else {
+            XCTFail("Expected a result")
+            return
+        }
+        
+        XCTAssertEqual(result, ["1+1": "A1", "2+2": "A2"])
+    }
+    
     func makeSUT(calculations: [String] = []) -> Flow<DummyRouter, String, String> {
         return Flow<DummyRouter, String, String>(router: router, calculations: calculations)
     }
     
     class DummyRouter: Router {
+
         var calculations: [String] = []
         var answerCallback: (String) -> Void = { _ in }
+        var result: [String: String]?
         
         func routeTo(calculation: String, callBack: @escaping (String) -> Void) {
             calculations.append(calculation)
             self.answerCallback = callBack
+        }
+
+        func routeTo(result: [String : (String)]?) {
+            self.result = result
         }
     }
     

@@ -1,14 +1,15 @@
 import Foundation
 
 protocol Router {
-    associatedtype Calculation
+    associatedtype Calculation: Hashable
     associatedtype Answer
     
     func routeTo(calculation: Calculation, callBack: @escaping (Answer) -> Void)
-    
+    func routeTo(result: [Calculation: Answer]?)
+
 }
 
-class Flow<R: Router, Calculation: Hashable, Answer> where Calculation == R.Calculation, Answer == R.Answer {
+class Flow<R: Router, Calculation, Answer> where Calculation == R.Calculation, Answer == R.Answer {
     private let router: R
     private let calculations: [Calculation]
     private var answers: [Calculation: Answer] = [:]
@@ -20,12 +21,13 @@ class Flow<R: Router, Calculation: Hashable, Answer> where Calculation == R.Calc
     
     func start() {
         if let firstCalculation = calculations.first {
-            router.routeTo(calculation: firstCalculation, callBack: nextCallback(from: firstCalculation))
-                           
+            router.routeTo(calculation: firstCalculation, callBack: callback(for: firstCalculation))
+        } else {
+            router.routeTo(result: nil)
         }
     }
     
-    private func nextCallback(from calculation: Calculation) -> (Answer) -> Void {
+    private func callback(for calculation: Calculation) -> (Answer) -> Void {
         return { [weak self] in
             self?.handleCallback(calculation, $0)
         }
@@ -35,9 +37,12 @@ class Flow<R: Router, Calculation: Hashable, Answer> where Calculation == R.Calc
         guard let currentIndex = calculations.index(of: calculation) else {
             fatalError("Didn't found calculation in array")
         }
+        answers[calculation] = answer
         let nextIndex = currentIndex + 1
         if nextIndex < calculations.count {
-            router.routeTo(calculation: calculations[nextIndex], callBack: nextCallback(from: calculations[nextIndex]))
+            router.routeTo(calculation: calculations[nextIndex], callBack: callback(for: calculations[nextIndex]))
+        } else {
+            router.routeTo(result: answers)
         }
     }
 }
