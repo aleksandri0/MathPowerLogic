@@ -7,12 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		483C319D2153935300D05452 /* MathPowerLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483C31942153935300D05452 /* MathPowerLogic.framework */; };
+		483C31AB215393AB00D05452 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5841FBDC00A007B5728 /* FlowTest.swift */; };
+		483C31AC215393B200D05452 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5821FBDC003007B5728 /* Flow.swift */; };
 		FABCB56E1FBCB70B007B5728 /* MathPowerLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FABCB5641FBCB70B007B5728 /* MathPowerLogic.framework */; };
 		FABCB5831FBDC003007B5728 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5821FBDC003007B5728 /* Flow.swift */; };
 		FABCB5851FBDC00A007B5728 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5841FBDC00A007B5728 /* FlowTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		483C319E2153935300D05452 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FABCB55B1FBCB70B007B5728 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 483C31932153935300D05452;
+			remoteInfo = MathPowerLogic_iOS;
+		};
 		FABCB56F1FBCB70B007B5728 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FABCB55B1FBCB70B007B5728 /* Project object */;
@@ -23,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		483C31942153935300D05452 /* MathPowerLogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MathPowerLogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		483C319C2153935300D05452 /* MathPowerLogic_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathPowerLogic_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABCB5641FBCB70B007B5728 /* MathPowerLogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MathPowerLogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABCB5681FBCB70B007B5728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FABCB56D1FBCB70B007B5728 /* MathPowerLogicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathPowerLogicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +44,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		483C31912153935300D05452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		483C31992153935300D05452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				483C319D2153935300D05452 /* MathPowerLogic.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FABCB5601FBCB70B007B5728 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,6 +91,8 @@
 			children = (
 				FABCB5641FBCB70B007B5728 /* MathPowerLogic.framework */,
 				FABCB56D1FBCB70B007B5728 /* MathPowerLogicTests.xctest */,
+				483C31942153935300D05452 /* MathPowerLogic.framework */,
+				483C319C2153935300D05452 /* MathPowerLogic_iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +118,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		483C318F2153935300D05452 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FABCB5611FBCB70B007B5728 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,6 +135,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		483C31932153935300D05452 /* MathPowerLogic_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 483C31A52153935300D05452 /* Build configuration list for PBXNativeTarget "MathPowerLogic_iOS" */;
+			buildPhases = (
+				483C318F2153935300D05452 /* Headers */,
+				483C31902153935300D05452 /* Sources */,
+				483C31912153935300D05452 /* Frameworks */,
+				483C31922153935300D05452 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MathPowerLogic_iOS;
+			productName = MathPowerLogic_iOS;
+			productReference = 483C31942153935300D05452 /* MathPowerLogic.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		483C319B2153935300D05452 /* MathPowerLogic_iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 483C31A82153935300D05452 /* Build configuration list for PBXNativeTarget "MathPowerLogic_iOSTests" */;
+			buildPhases = (
+				483C31982153935300D05452 /* Sources */,
+				483C31992153935300D05452 /* Frameworks */,
+				483C319A2153935300D05452 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				483C319F2153935300D05452 /* PBXTargetDependency */,
+			);
+			name = MathPowerLogic_iOSTests;
+			productName = MathPowerLogic_iOSTests;
+			productReference = 483C319C2153935300D05452 /* MathPowerLogic_iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FABCB5631FBCB70B007B5728 /* MathPowerLogic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FABCB5781FBCB70B007B5728 /* Build configuration list for PBXNativeTarget "MathPowerLogic" */;
@@ -141,10 +213,18 @@
 		FABCB55B1FBCB70B007B5728 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0910;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Sigma Software";
 				TargetAttributes = {
+					483C31932153935300D05452 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+					};
+					483C319B2153935300D05452 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+					};
 					FABCB5631FBCB70B007B5728 = {
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 0910;
@@ -171,11 +251,27 @@
 			targets = (
 				FABCB5631FBCB70B007B5728 /* MathPowerLogic */,
 				FABCB56C1FBCB70B007B5728 /* MathPowerLogicTests */,
+				483C31932153935300D05452 /* MathPowerLogic_iOS */,
+				483C319B2153935300D05452 /* MathPowerLogic_iOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		483C31922153935300D05452 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		483C319A2153935300D05452 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FABCB5621FBCB70B007B5728 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +289,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		483C31902153935300D05452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				483C31AC215393B200D05452 /* Flow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		483C31982153935300D05452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				483C31AB215393AB00D05452 /* FlowTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FABCB55F1FBCB70B007B5728 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -212,6 +324,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		483C319F2153935300D05452 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 483C31932153935300D05452 /* MathPowerLogic_iOS */;
+			targetProxy = 483C319E2153935300D05452 /* PBXContainerItemProxy */;
+		};
 		FABCB5701FBCB70B007B5728 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FABCB5631FBCB70B007B5728 /* MathPowerLogic */;
@@ -220,6 +337,108 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		483C31A62153935300D05452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U53J2D967K;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/MathPowerLogic/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "aleksandri0.MathPowerLogic-iOS";
+				PRODUCT_NAME = MathPowerLogic;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		483C31A72153935300D05452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U53J2D967K;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/MathPowerLogic/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "aleksandri0.MathPowerLogic-iOS";
+				PRODUCT_NAME = MathPowerLogic;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		483C31A92153935300D05452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U53J2D967K;
+				INFOPLIST_FILE = MathPowerLogicTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "aleksandri0.MathPowerLogic-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		483C31AA2153935300D05452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U53J2D967K;
+				INFOPLIST_FILE = MathPowerLogicTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "aleksandri0.MathPowerLogic-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		FABCB5761FBCB70B007B5728 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -269,6 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -323,6 +543,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -415,6 +636,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		483C31A52153935300D05452 /* Build configuration list for PBXNativeTarget "MathPowerLogic_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				483C31A62153935300D05452 /* Debug */,
+				483C31A72153935300D05452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		483C31A82153935300D05452 /* Build configuration list for PBXNativeTarget "MathPowerLogic_iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				483C31A92153935300D05452 /* Debug */,
+				483C31AA2153935300D05452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FABCB55E1FBCB70B007B5728 /* Build configuration list for PBXProject "MathPowerLogic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
