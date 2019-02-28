@@ -141,11 +141,11 @@ class FlowTest: XCTestCase {
         XCTAssertEqual(router.calculations.count, 0)
     }
     
-    func makeSUT(_ calculations: [Difficulty: [String]] = [:]) -> Flow<DummyRouter, String, String> {
-        return Flow<DummyRouter, String, String>(router, calculations)
+    func makeSUT(_ calculations: [Difficulty: [String]] = [:]) -> Flow<DummyRouter, String, String, Difficulty> {
+        return Flow<DummyRouter, String, String, Difficulty>(router, calculations)
     }
     
-    func makeReadyToStartSUT(calculations: [String] = [], _ difficulty: Difficulty = .easy) -> Flow<DummyRouter, String, String> {
+    func makeReadyToStartSUT(calculations: [String] = [], _ difficulty: Difficulty = .easy) -> Flow<DummyRouter, String, String, Difficulty> {
         let sut = makeSUT([difficulty: calculations])
         sut.selectDifficulty()
         router.difficultyCallback(difficulty)
@@ -161,26 +161,22 @@ class FlowTest: XCTestCase {
         var difficultyCallback: (Difficulty) -> Void = { _ in }
         var result: [String: String]?
         var difficulty: Difficulty?
-        
-        func routeToDifficulty(callBack: @escaping (Difficulty) -> Void) {
+
+        func routeToDifficulties(_ difficulties: [Difficulty], callback: @escaping (Difficulty) -> Void) {
             difficulty = nil
             calculations = []
             result = nil
-            self.difficultyCallback = callBack
+            self.difficultyCallback = callback
         }
-        
-        func routeTo(calculation: String, difficulty: Difficulty, callBack: @escaping (String) -> Void) {
+        func routeToCalculation(_ calculation: String, difficulty: Difficulty, callback: @escaping (String) -> Void) {
             calculations.append(calculation)
-            self.answerCallback = callBack
+            self.answerCallback = callback
             self.difficulty = difficulty
         }
 
-        func routeTo(result: [String: String]?, restartCallBack: @escaping () -> Void) {
+        func routeToResult(_ result: [String: String]?, restartCallback: @escaping () -> Void) {
             self.result = result
-            self.restartCallback = restartCallBack
+            self.restartCallback = restartCallback
         }
     }
-    
 }
-
-

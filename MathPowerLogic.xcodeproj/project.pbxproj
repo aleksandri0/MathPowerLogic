@@ -10,6 +10,10 @@
 		483C319D2153935300D05452 /* MathPowerLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483C31942153935300D05452 /* MathPowerLogic.framework */; };
 		483C31AB215393AB00D05452 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5841FBDC00A007B5728 /* FlowTest.swift */; };
 		483C31AC215393B200D05452 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5821FBDC003007B5728 /* Flow.swift */; };
+		FA2056B0221FFCD400694891 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2056AF221FFCD400694891 /* Difficulty.swift */; };
+		FA2056B1221FFCD400694891 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2056AF221FFCD400694891 /* Difficulty.swift */; };
+		FA2056B3221FFCE100694891 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2056B2221FFCE100694891 /* Router.swift */; };
+		FA2056B4221FFCE100694891 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2056B2221FFCE100694891 /* Router.swift */; };
 		FABCB56E1FBCB70B007B5728 /* MathPowerLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FABCB5641FBCB70B007B5728 /* MathPowerLogic.framework */; };
 		FABCB5831FBDC003007B5728 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5821FBDC003007B5728 /* Flow.swift */; };
 		FABCB5851FBDC00A007B5728 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCB5841FBDC00A007B5728 /* FlowTest.swift */; };
@@ -35,6 +39,8 @@
 /* Begin PBXFileReference section */
 		483C31942153935300D05452 /* MathPowerLogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MathPowerLogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		483C319C2153935300D05452 /* MathPowerLogic_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathPowerLogic_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA2056AF221FFCD400694891 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		FA2056B2221FFCE100694891 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FABCB5641FBCB70B007B5728 /* MathPowerLogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MathPowerLogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABCB5681FBCB70B007B5728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FABCB56D1FBCB70B007B5728 /* MathPowerLogicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathPowerLogicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				FABCB5821FBDC003007B5728 /* Flow.swift */,
+				FA2056B2221FFCE100694891 /* Router.swift */,
+				FA2056AF221FFCD400694891 /* Difficulty.swift */,
 				FABCB5681FBCB70B007B5728 /* Info.plist */,
 			);
 			path = MathPowerLogic;
@@ -293,6 +301,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2056B1221FFCD400694891 /* Difficulty.swift in Sources */,
+				FA2056B4221FFCE100694891 /* Router.swift in Sources */,
 				483C31AC215393B200D05452 /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +319,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2056B0221FFCD400694891 /* Difficulty.swift in Sources */,
+				FA2056B3221FFCE100694891 /* Router.swift in Sources */,
 				FABCB5831FBDC003007B5728 /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

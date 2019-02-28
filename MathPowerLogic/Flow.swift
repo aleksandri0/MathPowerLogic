@@ -1,22 +1,6 @@
 import Foundation
 
-protocol Router {
-    associatedtype Calculation: Hashable
-    associatedtype Answer
-    
-    func routeToDifficulty(callBack: @escaping (Difficulty) -> Void)
-    func routeTo(calculation: Calculation, difficulty: Difficulty, callBack: @escaping (Answer) -> Void)
-    func routeTo(result: [Calculation: Answer]?, restartCallBack: @escaping () -> Void)
-
-}
-
-enum Difficulty {
-    case easy
-    case medium
-    case hard
-}
-
-class Flow<R: Router, Calculation, Answer> where Calculation == R.Calculation, Answer == R.Answer {
+class Flow<R: Router, Calculation, Answer, Difficulty> where Calculation == R.Calculation, Answer == R.Answer, Difficulty == R.Difficulty {
     private let router: R
     private let calculations: [Difficulty: [Calculation]]
     private var answers: [Calculation: Answer] = [:]
@@ -26,9 +10,13 @@ class Flow<R: Router, Calculation, Answer> where Calculation == R.Calculation, A
         self.router = router
         self.calculations = calculations
     }
-    
+
+    var difficulties: [Difficulty] {
+        return calculations.map { $0.0 }
+    }
+
     func selectDifficulty() {
-        router.routeToDifficulty { [weak self] difficulty in
+        router.routeToDifficulties(difficulties) { [weak self] difficulty in
             self?.difficulty = difficulty
         }
     }
@@ -39,9 +27,9 @@ class Flow<R: Router, Calculation, Answer> where Calculation == R.Calculation, A
         }
         
         if let calculations = calculations[difficulty], let firstCalculation = calculations.first {
-            router.routeTo(calculation: firstCalculation, difficulty: difficulty, callBack: calculationCallback(for: firstCalculation))
+            router.routeToCalculation(firstCalculation, difficulty: difficulty, callback: calculationCallback(for: firstCalculation))
         } else {
-            router.routeTo(result: nil, restartCallBack: restartCallback())
+            router.routeToResult(nil, restartCallback: restartCallback())
         }
     }
     
@@ -68,9 +56,9 @@ class Flow<R: Router, Calculation, Answer> where Calculation == R.Calculation, A
         answers[calculation] = answer
         let nextIndex = currentIndex + 1
         if nextIndex < calculations.count {
-            router.routeTo(calculation: calculations[nextIndex], difficulty: difficulty, callBack: calculationCallback(for: calculations[nextIndex]))
+            router.routeToCalculation(calculations[nextIndex], difficulty: difficulty, callback: calculationCallback(for: calculations[nextIndex]))
         } else {
-            router.routeTo(result: answers, restartCallBack: restartCallback())
+            router.routeToResult(answers, restartCallback: restartCallback())
         }
     }
 }
